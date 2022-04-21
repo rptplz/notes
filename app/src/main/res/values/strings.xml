@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Simple Notes</string>
+    <string name="edittext_title_hint">Title</string>
+    <string name="edittext_content_hint">Content</string>
+    <string name="unable_edit_note">Unable to edit that note</string>
+    <string name="create_new_note_desc">Create new note</string>
+    <string name="apply_changes_desc">Apply changes</string>
+</resources>
