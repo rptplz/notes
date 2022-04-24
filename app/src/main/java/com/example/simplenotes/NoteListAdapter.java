@@ -7,12 +7,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,10 +23,11 @@ import java.util.List;
  * Adapter for the RecyclerView that displays a list of notes.
  */
 
-public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteViewHolder> {
+public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteViewHolder> implements Filterable {
     private static ClickListener clickListener;
     private static MenuItemClickListener menuItemClickListener;
     private List<Note> mNoteList;
+    private List<Note> mFilteredList;
     private LayoutInflater mInflater;
 
     public NoteListAdapter(Context context) {
@@ -76,8 +80,8 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
 
     @Override
     public void onBindViewHolder(@NonNull NoteListAdapter.NoteViewHolder holder, int position) {
-        if (mNoteList != null) {
-            Note mCurrent = mNoteList.get(position);
+        if (mFilteredList != null) {
+            Note mCurrent = mFilteredList.get(position);
             holder.noteTitleView.setText(mCurrent.getTitle());
             holder.noteContentView.setText(getCompactNoteContent(mCurrent.getContent()));
         }
@@ -86,13 +90,48 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
 
     @Override
     public int getItemCount() {
-        if (mNoteList != null) {
-            return mNoteList.size();
+        if (mFilteredList != null) {
+            return mFilteredList.size();
         } else return 0;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String searchString = charSequence.toString().toLowerCase();
+                if (searchString.isEmpty()) {
+                    mFilteredList = mNoteList;
+                } else {
+                    List<Note> filteredList = new ArrayList<>();
+
+                    for (Note note : mNoteList) {
+                        if (note.getTitle().toLowerCase().contains(searchString)
+                                || note.getContent().toLowerCase().contains(searchString)) {
+                            filteredList.add(note);
+                        }
+                    }
+
+                    mFilteredList = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = mFilteredList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                mFilteredList = (List<Note>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     void setNotes(List<Note> notes) {
         mNoteList = notes;
+        mFilteredList = notes;
         notifyDataSetChanged();
     }
 
