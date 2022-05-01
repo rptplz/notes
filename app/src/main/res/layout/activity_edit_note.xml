@@ -21,10 +21,5 @@
 
     <include layout="@layout/content_edit_note" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_edit_note"
-        style="@style/fab"
-        android:contentDescription="@string/apply_changes_desc"
-        android:src="@drawable/ic_fab_apply" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -3,13 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/drawable-anydpi/ic_fab_apply.xml" value="0.106" />
         <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/drawable/back_for_notelist_item.xml" value="0.1025" />
+        <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/drawable/buttons_selector.xml" value="0.113" />
         <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1025" />
         <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/layout/activity_edit_note.xml" value="0.10237659963436929" />
         <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/layout/content_edit_note.xml" value="0.11224489795918367" />
+        <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/layout/content_edit_note.xml" value="0.16666666666666666" />
         <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/layout/notelist_item.xml" value="0.13333333333333333" />
+        <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/menu/menu_options_edit_note.xml" value="0.13333333333333333" />
         <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/menu/menu_options_main.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/menu/menu_popup_notes.xml" value="0.1425925925925926" />
         <entry key="..\:/AndroidStudioProjects/SimpleNotes/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />

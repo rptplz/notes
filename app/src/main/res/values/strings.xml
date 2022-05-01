@@ -7,4 +7,5 @@
     <string name="apply_changes_desc">Apply changes</string>
     <string name="search_title">Search</string>
     <string name="delete_all_title">Delete all</string>
+    <string name="apply_changes">Apply changes</string>
 </resources>

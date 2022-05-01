@@ -2,6 +2,9 @@ package com.example.simplenotes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.SpannedString;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -83,7 +86,8 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         if (mFilteredList != null) {
             Note mCurrent = mFilteredList.get(position);
             holder.noteTitleView.setText(mCurrent.getTitle());
-            holder.noteContentView.setText(getCompactNoteContent(mCurrent.getContent()));
+            SpannableString spannableString = new SpannableString(Html.fromHtml(mCurrent.getContent()));
+            holder.noteContentView.setText(spannableString, TextView.BufferType.SPANNABLE);
         }
     }
 
@@ -105,10 +109,10 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
                     mFilteredList = mNoteList;
                 } else {
                     List<Note> filteredList = new ArrayList<>();
-
                     for (Note note : mNoteList) {
+                        String plainContent = Html.fromHtml(note.getContent()).toString();
                         if (note.getTitle().toLowerCase().contains(searchString)
-                                || note.getContent().toLowerCase().contains(searchString)) {
+                                || plainContent.toLowerCase().contains(searchString)) {
                             filteredList.add(note);
                         }
                     }
